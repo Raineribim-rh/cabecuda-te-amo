@@ -17,7 +17,7 @@ html, body{
   font-family:Arial;
 }
 
-/* VIDEO */
+/* VÍDEO */
 
 video{
   position:fixed;
@@ -39,7 +39,7 @@ video{
   background:#ff2e63;
   color:white;
   border:none;
-  padding:10px 15px;
+  padding:12px 16px;
   border-radius:999px;
   cursor:pointer;
   font-weight:bold;
@@ -59,7 +59,7 @@ video{
   font-size:3rem;
 }
 
-/* CABEÇONA (DESENHO CSS) */
+/* CABEÇUDA */
 
 .head{
   width:170px;
@@ -82,8 +82,6 @@ video{
   border-radius:50%;
 }
 
-/* OLHOS */
-
 .eye{
   width:20px;
   height:20px;
@@ -96,8 +94,6 @@ video{
 .eye.left{left:45px;}
 .eye.right{right:45px;}
 
-/* BOCA */
-
 .mouth{
   width:60px;
   height:25px;
@@ -109,23 +105,32 @@ video{
   transform:translateX(-50%);
 }
 
-/* ITENS */
+/* GRID BOTÕES */
 
-.item{
-  position:fixed;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px;
+  padding:15px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.btn{
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.2);
   color:white;
-  padding:10px 14px;
-  border-radius:999px;
+  padding:12px;
+  border-radius:16px;
   cursor:pointer;
   font-size:13px;
-  z-index:3;
-  transition:.3s;
+  text-align:center;
+  transition:.2s;
+  backdrop-filter:blur(8px);
 }
 
-.item:hover{
-  transform:scale(1.1);
+.btn:hover{
+  transform:scale(1.08);
   background:white;
   color:#ff2e63;
 }
@@ -148,7 +153,7 @@ video{
 
 .box{
   width:90%;
-  max-width:500px;
+  max-width:520px;
   background:white;
   color:black;
   padding:25px;
@@ -175,9 +180,9 @@ video{
 
 <body>
 
-<!-- VIDEO (FUNCIONA SEM BLOQUEIO) -->
+<!-- VÍDEO (SEU LINK RAW) -->
 <video id="video" autoplay loop muted playsinline>
-  <source src="https://raw.githubusercontent.com/Raineribim-rh/cabecuda-te-amo/02bc005806d2d8c935c9ab813bf112533b83408e/Nao_ficanos_parecidos_Nao_mud.mp4">
+  <source src="https://github.com/Raineribim-rh/cabecuda-te-amo/raw/refs/heads/main/Nao_ficanos_parecidos_Nao_mud.mp4">
 </video>
 
 <button class="sound" onclick="ativarSom()">🔊 Som</button>
@@ -194,6 +199,9 @@ video{
   <p>cabeçuda • fuinha • minha delícia 😭❤️</p>
 </div>
 
+<!-- BOTÕES -->
+<div class="grid" id="grid"></div>
+
 <!-- POPUP -->
 <div class="popup" id="popup">
   <div class="box">
@@ -205,67 +213,72 @@ video{
 
 <script>
 
-/* SOM (FUNCIONA SOMENTE COM CLIQUE) */
+/* SOM */
 function ativarSom(){
   const v=document.getElementById("video");
   v.muted=false;
   v.volume=1;
 }
 
-/* ITENS */
+/* 40 ITENS (ZUEIRA + “PICANTE LEVE” COMO PEDIDO) */
 
 const itens = [
-["Cabeçona","Sua cabeça gigante e perfeita 😭❤️"],
-["Fuinha","Sua cara de fuinha é única 😩❤️"],
-["Testa","IMAX total 😭"],
-["Xerecona","Perfeição proibida 😳❤️"],
-["Beiço","Beiço de periquito lindo 😩❤️"],
-["Cheiro","Seu cheiro vicia 😭"],
-["Abraço","Seu abraço cura tudo ❤️"],
-["Sentada","Impacto mundial 😩"],
-["Gemido","Isso deveria ser ilegal 😭"],
-["Olhos","Me desmonta ❤️"],
-["Sorriso","Meu ponto fraco 😩"],
-["Rabão","Gravidade própria 😭"],
-["Gostosa","Inacreditável 😩"],
-["Amor","Você é tudo ❤️"],
-["Delícia","Definição perfeita 😭"],
-["Coxas","Crime global 😩"],
-["Boca","Perfeita 😭"],
-["Nariz","Fofo demais 😩"],
-["Cheirosa","Vício absoluto ❤️"],
-["Vida","Meu tudo 😭"],
-["Abraçona","Segurança total 😩"],
-["Brava","Até brava é linda 😭"],
-["Dengosa","Perfeição ❤️"],
-["Risada","Cura tudo 😩"],
-["Gemidona","Absurdamente proibido 😭"]
+
+["Cabeçuda","Sua cabeça é enorme e absurdamente fofa 😭❤️"],
+["Fuinha","Sua cara de fuinha é sua assinatura kkk 😩"],
+["Testa","Essa testa parece tela de cinema 😭"],
+["Olhar","Seu olhar desmonta qualquer um ❤️"],
+["Sorriso","Seu sorriso destrói qualquer tristeza 😩"],
+["Beiço","Esse beiço de periquito é injustamente lindo 😭"],
+["Beijo","Beijar você é perder o rumo 😩"],
+["Abraço","Seu abraço prende o tempo ❤️"],
+["Cheiro","Seu cheiro vicia mais que tudo 😭"],
+["Cabelo","Seu cabelo deveria ser patrimônio mundial 😩"],
+["Brava","Até brava você fica linda ❤️"],
+["Manhosa","Você manhosa é golpe baixo 😭"],
+["Dengosa","Você é pura armadilha fofa 😩"],
+["Risada","Sua risada deveria ser terapia ❤️"],
+["Gemido (brincadeira)","Sua voz quando ri já me desmonta 😭"],
+["Sentada (zoeira)","Quando você senta parece que o mundo muda 😩"],
+["Coxas (zueira)","Isso aí é nível obra de arte 😭"],
+["Boca","Sua boca é perigosa demais ❤️"],
+["Nariz","Narizinho perfeito e irritantemente fofo 😩"],
+["Orelha","Até sua orelha é bonitinha 😭"],
+["Pescoço","Área de perigo emocional 😩"],
+["Abraçona","Abraço nível vício ❤️"],
+["Cheirosa","Cheiro que gruda na mente 😭"],
+["Gostosa (zoeira)","Você é absurda de bonita 😩"],
+["Delícia","Você é literalmente isso ❤️"],
+["Amor","Você é meu caos favorito 😭"],
+["Vida","Você é tudo que importa 😩"],
+["Meu","Você é minha confusão linda ❤️"],
+["Perfeita","Erro zero na criação 😭"],
+["Fofa","Excesso de fofura detectado 😩"],
+["Linda","Sem comentários ❤️"],
+["Maravilhosa","Injusto com o resto do mundo 😭"],
+["Encantadora","Você simplesmente prende atenção 😩"],
+["Vício","Você é vício puro ❤️"],
+["Energia","Você muda o ambiente 😭"],
+["Carinho","Você é carinho em forma de pessoa 😩"],
+["Alegria","Você é minha paz ❤️"],
+["Louca","Sua loucura combina comigo 😭"],
+["Especial","Você não tem substituta 😩"],
+["Única","Não existe outra igual ❤️"],
+["Minha","Só minha 😭❤️"]
+
 ];
 
-/* POSIÇÕES FIXAS */
+const grid=document.getElementById("grid");
 
-const pos = [
-[10,20],[25,30],[40,15],[60,25],[75,20],
-[15,60],[35,55],[55,60],[70,65],[85,55],
-[20,75],[45,80],[65,75],[80,85],[30,10],
-[50,40],[70,40],[85,35],[15,40],[10,50],
-[60,10],[40,35],[25,70],[55,85],[75,50]
-];
+itens.forEach(i=>{
 
-const body=document.body;
+  const b=document.createElement("div");
+  b.className="btn";
+  b.innerText=i[0];
 
-itens.forEach((i,index)=>{
+  b.onclick=()=>open(i[0],i[1]);
 
-  const el=document.createElement("div");
-  el.className="item";
-  el.innerText=i[0];
-
-  el.style.left=pos[index][0]+"vw";
-  el.style.top=pos[index][1]+"vh";
-
-  el.onclick=()=>open(i[0],i[1]);
-
-  body.appendChild(el);
+  grid.appendChild(b);
 
 });
 
