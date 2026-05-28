@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Larissa ❤️</title>
+<title>Larissa ❤️ Minha Delícia</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -18,10 +18,9 @@
 }
 
 body{
-  overflow-x:hidden;
   background:black;
+  overflow-x:hidden;
   color:white;
-  min-height:100vh;
 }
 
 /* VIDEO */
@@ -33,9 +32,7 @@ body{
   height:100%;
   object-fit:cover;
   z-index:-20;
-
-  filter:brightness(0.18) blur(1.5px);
-  transform:scale(1.03);
+  filter:brightness(.18) blur(1.4px);
 }
 
 /* OVERLAY */
@@ -44,189 +41,122 @@ body::after{
   content:'';
   position:fixed;
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.45));
+  background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.4));
   z-index:-10;
 }
 
 /* BOTÃO SOM */
 
-.sound-btn{
+.sound{
   position:fixed;
-  top:20px;
-  right:20px;
-  padding:14px 20px;
-  border:none;
-  border-radius:999px;
+  top:15px;
+  right:15px;
   background:#ff2e63;
+  border:none;
+  padding:12px 18px;
+  border-radius:999px;
   color:white;
   font-weight:800;
   cursor:pointer;
   z-index:9999;
   box-shadow:0 0 25px rgba(255,46,99,.5);
-  transition:.3s;
-}
-
-.sound-btn:hover{
-  transform:scale(1.05);
-}
-
-/* GLOW */
-
-.glow{
-  position:fixed;
-  width:500px;
-  height:500px;
-  background:#ff2e63;
-  filter:blur(140px);
-  opacity:.22;
-  border-radius:50%;
-  z-index:-5;
-  animation:move 8s infinite alternate;
-}
-
-.glow2{
-  right:-120px;
-  bottom:-120px;
-  background:#ff7aa2;
-}
-
-@keyframes move{
-  from{transform:translate(0,0);}
-  to{transform:translate(60px,-40px);}
-}
-
-/* CONTAINER */
-
-.container{
-  width:100%;
-  max-width:1450px;
-  margin:auto;
-  padding:40px 20px 100px;
-  position:relative;
-  z-index:2;
 }
 
 /* TITULO */
 
-.title{
+.header{
   text-align:center;
-  margin-bottom:35px;
+  padding:40px 20px 10px;
 }
 
-.title h1{
-  font-size:5rem;
-  font-weight:800;
-  background:linear-gradient(90deg,#fff,#ff9ab7);
+.header h1{
+  font-size:4rem;
+  background:linear-gradient(90deg,#fff,#ff7aa2);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  transition:.5s;
 }
 
-.title p{
-  margin-top:10px;
-  font-size:1.2rem;
+.header p{
   opacity:.9;
+  margin-top:10px;
 }
 
-/* CABEÇA */
+/* CABEÇUDA */
 
-.head-wrapper{
+.face-box{
+  width:280px;
+  height:350px;
+  margin:20px auto 40px;
   position:relative;
-  width:340px;
-  height:420px;
-  margin:0 auto 50px;
-  animation:float 3s ease-in-out infinite;
-}
-
-.head-shadow{
-  position:absolute;
-  width:260px;
-  height:70px;
-  background:rgba(0,0,0,.45);
-  border-radius:50%;
-  bottom:-20px;
-  left:50%;
-  transform:translateX(-50%);
-  filter:blur(20px);
+  animation:float 3s infinite ease-in-out;
 }
 
 .face{
-  position:absolute;
   width:100%;
   height:100%;
   background:#ffd4b8;
-  border:7px solid #111;
-  border-radius:55% 55% 52% 52%;
+  border:6px solid #111;
+  border-radius:55%;
+  position:absolute;
 }
 
 .hair{
-  position:absolute;
   width:115%;
-  height:190px;
+  height:160px;
   background:#111;
-  left:-7%;
+  position:absolute;
   top:-10px;
+  left:-7%;
   border-radius:60%;
 }
 
 .eye{
-  position:absolute;
-  width:45px;
-  height:45px;
+  width:35px;
+  height:35px;
   background:#111;
   border-radius:50%;
-  top:165px;
+  position:absolute;
+  top:140px;
 }
 
-.left{left:80px;}
-.right{right:80px;}
+.left{left:60px;}
+.right{right:60px;}
 
 .mouth{
+  width:80px;
+  height:40px;
+  border-bottom:6px solid #111;
+  border-radius:0 0 50px 50px;
   position:absolute;
-  width:110px;
-  height:50px;
-  border-bottom:8px solid #111;
-  border-radius:0 0 60px 60px;
-  bottom:95px;
+  bottom:80px;
   left:50%;
   transform:translateX(-50%);
-}
-
-.fuinha{
-  position:absolute;
-  top:-30px;
-  right:-30px;
-  background:#ff2e63;
-  color:white;
-  padding:12px 18px;
-  border-radius:999px;
-  font-weight:700;
-  box-shadow:0 0 25px rgba(255,46,99,.5);
 }
 
 /* GRID */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:14px;
+  padding:20px;
+  max-width:1200px;
+  margin:auto;
 }
-
-/* CARD */
 
 .card{
   background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:24px;
-  padding:22px;
+  border:1px solid rgba(255,255,255,.12);
+  padding:18px;
+  border-radius:18px;
+  text-align:center;
   cursor:pointer;
   transition:.3s;
-  text-align:center;
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
 }
 
 .card:hover{
-  transform:translateY(-7px) scale(1.05);
+  transform:scale(1.05);
   background:white;
   color:#ff2e63;
 }
@@ -236,14 +166,13 @@ body::after{
 .popup{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.8);
   display:flex;
   align-items:center;
   justify-content:center;
   opacity:0;
   pointer-events:none;
   transition:.3s;
-  z-index:999;
 }
 
 .popup.active{
@@ -251,55 +180,35 @@ body::after{
   pointer-events:all;
 }
 
-.popup-box{
+.box{
   width:90%;
   max-width:700px;
   background:white;
   color:#111;
-  border-radius:35px;
-  padding:40px;
+  padding:35px;
+  border-radius:25px;
   text-align:center;
 }
 
-.popup-box h2{
+.box h2{
   color:#ff2e63;
-  font-size:2.5rem;
-  margin-bottom:15px;
-}
-
-.popup-box p{
-  font-size:1.3rem;
-  line-height:1.9;
+  margin-bottom:10px;
+  font-size:2.2rem;
 }
 
 .close{
   position:absolute;
+  right:20px;
   top:15px;
-  right:22px;
-  font-size:2.2rem;
+  font-size:2rem;
   cursor:pointer;
-}
-
-/* HEARTS */
-
-.heart{
-  position:fixed;
-  bottom:-20px;
-  color:rgba(255,255,255,.15);
-  animation:up linear infinite;
-  z-index:-1;
-}
-
-@keyframes up{
-  from{transform:translateY(0);}
-  to{transform:translateY(-120vh);}
 }
 
 /* FLOAT */
 
 @keyframes float{
   0%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
+  50%{transform:translateY(-10px);}
   100%{transform:translateY(0);}
 }
 
@@ -308,51 +217,34 @@ body::after{
 
 <body>
 
-<!-- VIDEO COM SOM -->
+<!-- VIDEO -->
 <video id="video" autoplay loop playsinline class="bg-video">
-  <source src="https://raw.githubusercontent.com/Raineribim-rh/cabecuda-te-amo/02bc005806d2d8c935c9ab813bf112533b83408e/Nao_ficanos_parecidos_Nao_mud.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/Raineribim-rh/cabecuda-te-amo/02bc005806d2d8c935c9ab813bf112533b83408e/Nao_ficanos_parecidos_Nao_mud.mp4">
 </video>
 
-<!-- BOTÃO SOM -->
-<button class="sound-btn" onclick="ativarSom()">
-🔊 Ativar Som ❤️
-</button>
+<button class="sound" onclick="ativarSom()">🔊 Som</button>
 
-<div class="glow"></div>
-<div class="glow glow2"></div>
-
-<div class="container">
-
-  <div class="title">
-    <h1 id="titulo">LARISSA ❤️</h1>
-    <p>Minha delícia • Minha cabeçuda • Minha cara de fuinha 😭❤️</p>
-  </div>
-
-  <div class="head-wrapper">
-
-    <div class="fuinha">fuinha 😭</div>
-
-    <div class="head-shadow"></div>
-
-    <div class="face">
-      <div class="hair"></div>
-      <div class="eye left"></div>
-      <div class="eye right"></div>
-      <div class="mouth"></div>
-    </div>
-
-  </div>
-
-  <div class="grid" id="grid"></div>
-
+<div class="header">
+  <h1>LARISSA ❤️</h1>
+  <p>minha cabeçuda, minha delícia, minha fuinha perfeita</p>
 </div>
 
-<!-- POPUP -->
+<div class="face-box">
+  <div class="face">
+    <div class="hair"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="mouth"></div>
+  </div>
+</div>
+
+<div class="grid" id="grid"></div>
+
 <div class="popup" id="popup">
-  <div class="popup-box">
+  <div class="box">
     <div class="close" onclick="closePopup()">×</div>
-    <h2 id="popupTitle"></h2>
-    <p id="popupText"></p>
+    <h2 id="t"></h2>
+    <p id="p"></p>
   </div>
 </div>
 
@@ -360,92 +252,75 @@ body::after{
 
 /* SOM */
 function ativarSom(){
-
-  const video = document.getElementById("video");
-  video.muted = false;
-  video.volume = 1;
-  video.play();
-
-  document.querySelector(".sound-btn").style.display = "none";
-
-  // efeito visual
-  document.getElementById("titulo").style.transform = "scale(1.08)";
+  const v = document.getElementById("video");
+  v.muted = false;
+  v.volume = 1;
+  v.play();
 }
 
-/* DADOS */
+/* +40 ELOGIOS INTUITIVOS */
 
-const itens = [
-
-["Cabeçona","Larissa sua cabeça é tão grande que virou satélite natural 😭❤️"],
-
-["Testona","Essa testona parece tela de cinema IMAX KKKK 😩"],
-
-["Bundona","Esse bundão altera a gravidade do planeta 😭"],
-
-["Cheiro","Seu cheiro me vicia mais que tudo 😩❤️"],
-
-["Abraço","Seu abraço é meu lugar favorito no mundo ❤️"],
-
-["Sentada","Sua sentada desliga qualquer sistema 😭"],
-
-["Gemido","Seu gemido deveria tocar no Spotify 😩"],
-
-["Xerecona","Patrimônio mundial da humanidade 😳❤️"],
-
-["Xulé","Perigo biológico nível máximo ☣️😭"],
-
-["Fuinha","Sua cara de fuinha é perfeita demais 😭❤️"],
-
-["Gostosa","Você é simplesmente absurda 😩❤️"],
-
-["Amor","Você é o amor da minha vida ❤️"]
-
+const data = [
+["Cabeçona","Sua cabeça é tão grande que pega Wi-Fi no mundo inteiro 😭❤️"],
+["Testona","Essa testona é uma tela de cinema IMAX 😩"],
+["Bundona","Esse bundão tem gravidade própria 😭"],
+["Rabão","O planeta gira mais devagar quando você passa 😩"],
+["Xerecona","Patrimônio mundial da sensualidade 😳❤️"],
+["Xulé","Arma biológica nível ONU ☣️😭"],
+["Cheiro","Seu cheiro é literalmente vício puro 😩"],
+["Cheirinho","Cheiro de felicidade grudado em você ❤️"],
+["Abraço","Seu abraço é prisão perpétua feliz 😭❤️"],
+["Sentada","Sua sentada derruba servidores 😩"],
+["Gemido","Seu gemido deveria ser patrimônio do Spotify 😭"],
+["Beiço","Seu beiço de periquito é criminosamente lindo 😩❤️"],
+["Beijinho","Te beijar é perder a consciência 😭"],
+["Bocona","Essa boca deveria ser proibida por lei 😩"],
+["Olhos","Seus olhos me desarmam inteiro ❤️"],
+["Sorriso","Seu sorriso reinicia meu cérebro 😭"],
+["Dormindo","Você dormindo parece erro de Deus de tão perfeita 😩"],
+["Brava","Até brava você é gostosa 😭"],
+["Manhosa","Seu drama é minha religião ❤️"],
+["Dengosa","Dengo absurdo nível mundial 😩"],
+["Cheiro cabelo","Seu cabelo tem cheiro de vício 😭"],
+["Pescoço","Seu pescoço é área de risco emocional ❤️"],
+["Orelha","Até sua orelha é perfeita 😩"],
+["Nariz","Narizinho fofo nível absurdo 😭"],
+["Coxas","Essas coxas são uma ameaça global 😩"],
+["Pés","Até seu pé é injusto de tão bonito 😭"],
+["Peitinho","Perfeição em forma de pessoa ❤️"],
+["Rabudinha","O maior patrimônio do planeta 😩"],
+["Gostosa","Você é ilegal de tão perfeita 😭"],
+["Delícia","Definição literal de perfeição ❤️"],
+["Amor","Você é meu universo inteiro 😩❤️"],
+["Fuinha","Sua cara de fuinha é minha religião 😭"],
+["Risada","Sua risada salva meu dia ❤️"],
+["Gemidona","Isso não é humano de tão bom 😩"],
+["Abraçona","Abraço que cura depressão 😭"],
+["Cheirosa","Perfume natural absurdo ❤️"],
+["Tesão","Você é o conceito inteiro 😩"],
+["Perfeita","Erro nenhum na sua criação 😭"],
+["Vida","Você é minha vida inteira ❤️"]
 ];
 
 const grid = document.getElementById("grid");
 
-itens.forEach(i=>{
-
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = i[0];
-
-  div.onclick = ()=>openPopup(i[0],i[1]);
-
-  grid.appendChild(div);
-
+data.forEach(i=>{
+  const c = document.createElement("div");
+  c.className="card";
+  c.innerHTML=i[0];
+  c.onclick=()=>open(i[0],i[1]);
+  grid.appendChild(c);
 });
 
-/* POPUP */
-
-function openPopup(titulo,texto){
-
+function open(t,p){
   document.getElementById("popup").classList.add("active");
-  document.getElementById("popupTitle").innerText = titulo;
-  document.getElementById("popupText").innerText = texto;
-
+  document.getElementById("t").innerText=t;
+  document.getElementById("p").innerText=p;
 }
 
 function closePopup(){
   document.getElementById("popup").classList.remove("active");
 }
-
-/* CORAÇÕES */
-
-setInterval(()=>{
-
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random()*100+"vw";
-  h.style.fontSize = (Math.random()*25+10)+"px";
-  h.style.animationDuration = (Math.random()*5+5)+"s";
-
-  document.body.appendChild(h);
-
-  setTimeout(()=>h.remove(),10000);
-
-},250);
 
 </script>
 
