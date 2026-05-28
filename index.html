@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Clique na Cabeçuda ❤️</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  overflow:hidden;
+  height:100vh;
+  background:
+  radial-gradient(circle at top,#ff4d6d,#0f0f0f 70%);
+  color:white;
+}
+
+.screen{
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  transition:1s;
+}
+
+.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(.9);
+}
+
+h1{
+  font-size:4rem;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+p{
+  font-size:1.4rem;
+  opacity:.9;
+  text-align:center;
+  max-width:700px;
+  line-height:1.6;
+}
+
+button{
+  margin-top:40px;
+  padding:18px 40px;
+  border:none;
+  border-radius:999px;
+  background:white;
+  color:#ff2e63;
+  font-size:1.2rem;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
+}
+
+.game{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+}
+
+.target{
+  position:absolute;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  border:3px solid rgba(255,255,255,.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+  backdrop-filter:blur(5px);
+  animation:pulse 1.5s infinite;
+  padding:10px;
+  font-weight:bold;
+}
+
+.target:hover{
+  transform:scale(1.1);
+  background:#ff2e63;
+}
+
+.message{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:900px;
+  background:rgba(0,0,0,.55);
+  border:1px solid rgba(255,255,255,.2);
+  padding:25px;
+  border-radius:25px;
+  text-align:center;
+  font-size:1.4rem;
+  line-height:1.7;
+  backdrop-filter:blur(10px);
+}
+
+.final{
+  text-align:center;
+  padding:40px;
+}
+
+.final h2{
+  font-size:5rem;
+  margin-bottom:20px;
+}
+
+.final p{
+  font-size:1.7rem;
+}
+
+.hearts{
+  position:absolute;
+  color:#ff5c8a;
+  animation:float 5s linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh) scale(0);
+    opacity:0;
+  }
+  to{
+    transform:translateY(-120vh) scale(2);
+    opacity:1;
+  }
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+
+@media(max-width:700px){
+
+  h1{
+    font-size:2.5rem;
+  }
+
+  .target{
+    width:95px;
+    height:95px;
+    font-size:.8rem;
+  }
+
+  .message{
+    font-size:1rem;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TELA INICIAL -->
+<div class="screen" id="start">
+
+  <h1>❤️ MISSÃO: AMAR A CABEÇUDA ❤️</h1>
+
+  <p>
+    Você recebeu uma missão extremamente importante:
+    encontrar os pontos mais perfeitos da mulher mais gostosa do planeta.
+  </p>
+
+  <button onclick="startGame()">
+    COMEÇAR 😈
+  </button>
+
+</div>
+
+<!-- GAME -->
+<div class="screen hidden" id="gameScreen">
+
+  <div class="game">
+
+    <div class="target" style="top:12%; left:40%;" onclick="showMessage(0)">
+      TESTONA
+    </div>
+
+    <div class="target" style="top:35%; left:70%;" onclick="showMessage(1)">
+      BUNDONA
+    </div>
+
+    <div class="target" style="top:65%; left:20%;" onclick="showMessage(2)">
+      XERECONA
+    </div>
+
+    <div class="target" style="top:55%; left:55%;" onclick="showMessage(3)">
+      XULÉ
+    </div>
+
+    <div class="target" style="top:22%; left:10%;" onclick="showMessage(4)">
+      CABEÇONA
+    </div>
+
+    <div class="message" id="message">
+      Clique em algum lugar 😈
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FINAL -->
+<div class="screen hidden final" id="final">
+
+  <h2>💖</h2>
+
+  <p>
+    Conclusão da pesquisa científica:
+    você é perfeita inteira.<br><br>
+
+    Da cabeça gigante até o xulé radioativo,
+    eu amo absolutamente tudo em você ❤️
+  </p>
+
+  <button onclick="location.reload()">
+    JOGAR DE NOVO 😈
+  </button>
+
+</div>
+
+<script>
+
+const mensagens = [
+
+`😭❤️ SUA TESTA É TÃO GRANDE
+que se passar um filme nela
+dá pra assistir em IMAX.`,
+
+`😩❤️ ESSE BUNDÃO GIGANTE
+tem gravidade própria.
+A NASA já detectou alteração orbital.`,
+
+`😳❤️ A XERECONA
+é patrimônio histórico nacional.
+Deveria estar protegida pela UNESCO.`,
+
+`☣️❤️ O XULÉ
+tem potencial bélico internacional.
+Mas eu amo até isso em você.`,
+
+`🥰❤️ MINHA CABEÇUDA LINDA,
+sua cabeça é tão enorme
+que dá pra usar como mesa de jantar.`
+
+];
+
+let clicks = 0;
+
+function startGame(){
+
+  document.getElementById("start")
+  .classList.add("hidden");
+
+  document.getElementById("gameScreen")
+  .classList.remove("hidden");
+
+}
+
+function showMessage(index){
+
+  document.getElementById("message")
+  .innerHTML = mensagens[index];
+
+  clicks++;
+
+  createHearts();
+
+  if(clicks >= 5){
+
+    setTimeout(()=>{
+
+      document.getElementById("gameScreen")
+      .classList.add("hidden");
+
+      document.getElementById("final")
+      .classList.remove("hidden");
+
+    },1800);
+
+  }
+
+}
+
+function createHearts(){
+
+  for(let i=0;i<15;i++){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("hearts");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.fontSize =
+    (Math.random()*30+15)+"px";
+
+    heart.style.animationDuration =
+    (Math.random()*3+2)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+      heart.remove();
+    },5000);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
