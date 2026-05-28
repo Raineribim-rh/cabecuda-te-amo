@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>Larissa ❤️</title>
 
 <style>
@@ -17,16 +16,17 @@ html, body{
   font-family:Arial;
 }
 
-/* VÍDEO */
+/* VÍDEO (ESSENCIAL — NÃO MEXER) */
 
 video{
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   object-fit:cover;
   z-index:-10;
-  filter:brightness(.25);
+  filter:brightness(.35);
 }
 
 /* BOTÃO SOM */
@@ -39,10 +39,9 @@ video{
   background:#ff2e63;
   color:white;
   border:none;
-  padding:12px 16px;
+  padding:10px 15px;
   border-radius:999px;
   cursor:pointer;
-  font-weight:bold;
 }
 
 /* HEADER */
@@ -52,87 +51,30 @@ video{
   text-align:center;
   color:white;
   padding:20px;
-  z-index:2;
 }
 
 .header h1{
   font-size:3rem;
 }
 
-/* CABEÇUDA */
-
-.head{
-  width:170px;
-  height:200px;
-  background:#ffd4b8;
-  border-radius:50%;
-  margin:10px auto;
-  position:relative;
-  border:4px solid #111;
-}
-
-.head::before{
-  content:"";
-  position:absolute;
-  width:200px;
-  height:120px;
-  background:#111;
-  top:-30px;
-  left:-15px;
-  border-radius:50%;
-}
-
-.eye{
-  width:20px;
-  height:20px;
-  background:#111;
-  border-radius:50%;
-  position:absolute;
-  top:90px;
-}
-
-.eye.left{left:45px;}
-.eye.right{right:45px;}
-
-.mouth{
-  width:60px;
-  height:25px;
-  border-bottom:4px solid #111;
-  border-radius:50%;
-  position:absolute;
-  bottom:40px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-/* GRID BOTÕES */
+/* ITENS */
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  display:flex;
+  flex-wrap:wrap;
   gap:10px;
-  padding:15px;
-  max-width:1100px;
-  margin:auto;
+  justify-content:center;
+  padding:10px;
 }
 
-.btn{
+.item{
   background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.2);
   color:white;
-  padding:12px;
-  border-radius:16px;
+  padding:10px 14px;
+  border-radius:999px;
   cursor:pointer;
   font-size:13px;
-  text-align:center;
-  transition:.2s;
-  backdrop-filter:blur(8px);
-}
-
-.btn:hover{
-  transform:scale(1.08);
-  background:white;
-  color:#ff2e63;
+  border:1px solid rgba(255,255,255,.2);
 }
 
 /* POPUP */
@@ -153,7 +95,7 @@ video{
 
 .box{
   width:90%;
-  max-width:520px;
+  max-width:500px;
   background:white;
   color:black;
   padding:25px;
@@ -162,17 +104,12 @@ video{
   position:relative;
 }
 
-.box h2{
-  color:#ff2e63;
-}
-
 .close{
   position:absolute;
   top:10px;
   right:15px;
   font-size:2rem;
   cursor:pointer;
-  font-weight:bold;
 }
 
 </style>
@@ -180,7 +117,7 @@ video{
 
 <body>
 
-<!-- VÍDEO (SEU LINK RAW) -->
+<!-- VÍDEO (RAW FUNCIONANDO) -->
 <video id="video" autoplay loop muted playsinline>
   <source src="https://github.com/Raineribim-rh/cabecuda-te-amo/raw/refs/heads/main/Nao_ficanos_parecidos_Nao_mud.mp4">
 </video>
@@ -189,17 +126,9 @@ video{
 
 <div class="header">
   <h1>LARISSA ❤️</h1>
-
-  <div class="head">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <div class="mouth"></div>
-  </div>
-
-  <p>cabeçuda • fuinha • minha delícia 😭❤️</p>
 </div>
 
-<!-- BOTÕES -->
+<!-- ITENS -->
 <div class="grid" id="grid"></div>
 
 <!-- POPUP -->
@@ -213,73 +142,46 @@ video{
 
 <script>
 
-/* SOM */
+/* SOM (OBRIGATÓRIO CLIQUE) */
 function ativarSom(){
   const v=document.getElementById("video");
   v.muted=false;
-  v.volume=1;
+  v.play();
 }
 
-/* 40 ITENS (ZUEIRA + “PICANTE LEVE” COMO PEDIDO) */
+/* ITENS */
 
 const itens = [
-
-["Cabeçuda","Sua cabeça é enorme e absurdamente fofa 😭❤️"],
-["Fuinha","Sua cara de fuinha é sua assinatura kkk 😩"],
-["Testa","Essa testa parece tela de cinema 😭"],
-["Olhar","Seu olhar desmonta qualquer um ❤️"],
-["Sorriso","Seu sorriso destrói qualquer tristeza 😩"],
-["Beiço","Esse beiço de periquito é injustamente lindo 😭"],
-["Beijo","Beijar você é perder o rumo 😩"],
-["Abraço","Seu abraço prende o tempo ❤️"],
-["Cheiro","Seu cheiro vicia mais que tudo 😭"],
-["Cabelo","Seu cabelo deveria ser patrimônio mundial 😩"],
-["Brava","Até brava você fica linda ❤️"],
-["Manhosa","Você manhosa é golpe baixo 😭"],
-["Dengosa","Você é pura armadilha fofa 😩"],
-["Risada","Sua risada deveria ser terapia ❤️"],
-["Gemido (brincadeira)","Sua voz quando ri já me desmonta 😭"],
-["Sentada (zoeira)","Quando você senta parece que o mundo muda 😩"],
-["Coxas (zueira)","Isso aí é nível obra de arte 😭"],
-["Boca","Sua boca é perigosa demais ❤️"],
-["Nariz","Narizinho perfeito e irritantemente fofo 😩"],
-["Orelha","Até sua orelha é bonitinha 😭"],
-["Pescoço","Área de perigo emocional 😩"],
-["Abraçona","Abraço nível vício ❤️"],
-["Cheirosa","Cheiro que gruda na mente 😭"],
-["Gostosa (zoeira)","Você é absurda de bonita 😩"],
-["Delícia","Você é literalmente isso ❤️"],
-["Amor","Você é meu caos favorito 😭"],
-["Vida","Você é tudo que importa 😩"],
-["Meu","Você é minha confusão linda ❤️"],
-["Perfeita","Erro zero na criação 😭"],
-["Fofa","Excesso de fofura detectado 😩"],
-["Linda","Sem comentários ❤️"],
-["Maravilhosa","Injusto com o resto do mundo 😭"],
-["Encantadora","Você simplesmente prende atenção 😩"],
-["Vício","Você é vício puro ❤️"],
-["Energia","Você muda o ambiente 😭"],
-["Carinho","Você é carinho em forma de pessoa 😩"],
-["Alegria","Você é minha paz ❤️"],
-["Louca","Sua loucura combina comigo 😭"],
-["Especial","Você não tem substituta 😩"],
-["Única","Não existe outra igual ❤️"],
-["Minha","Só minha 😭❤️"]
-
+["Cabeçuda","Cabeça gigante e fofa 😭❤️"],
+["Fuinha","Cara de fuinha kkk 😩"],
+["Testa","IMAX total 😭"],
+["Olhos","Hipnose pura ❤️"],
+["Sorriso","Perdição 😩"],
+["Beiço","Perfeito demais 😭"],
+["Cheiro","Vício absurdo 😩"],
+["Abraço","Segurança total ❤️"],
+["Brava","Mesmo assim linda 😭"],
+["Manhosa","Perfeição 😩"],
+["Coxas","Zoeira nível absurdo 😭"],
+["Boca","Perfeita ❤️"],
+["Nariz","Fofo demais 😩"],
+["Risada","Cura tudo 😭"],
+["Vida","Meu tudo ❤️"],
+["Amor","Você é isso 😩"],
+["Gostosa (zoeira)","Você é absurda 😭"],
+["Delícia","Definição ❤️"],
+["Cheirosa","Vício total 😩"],
+["Minha","Só minha 😭"]
 ];
 
 const grid=document.getElementById("grid");
 
 itens.forEach(i=>{
-
-  const b=document.createElement("div");
-  b.className="btn";
-  b.innerText=i[0];
-
-  b.onclick=()=>open(i[0],i[1]);
-
-  grid.appendChild(b);
-
+  const el=document.createElement("div");
+  el.className="item";
+  el.innerText=i[0];
+  el.onclick=()=>open(i[0],i[1]);
+  grid.appendChild(el);
 });
 
 /* POPUP */
