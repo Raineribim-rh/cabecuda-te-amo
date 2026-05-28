@@ -11,14 +11,13 @@
 html, body{
   margin:0;
   padding:0;
-  width:100%;
   height:100%;
-  overflow:hidden; /* ISSO REMOVE A ÁREA BRANCA */
+  overflow:hidden;
   background:black;
   font-family:Arial;
 }
 
-/* FUNDO VIDEO */
+/* VIDEO FUNDO */
 
 video{
   position:fixed;
@@ -27,30 +26,34 @@ video{
   height:100%;
   object-fit:cover;
   z-index:-10;
-  filter:brightness(.2);
+  filter:brightness(.25);
 }
 
-/* CAMADA PRINCIPAL */
+/* CAMADA */
 
-#world{
+.overlay{
   position:fixed;
   inset:0;
-  overflow:hidden;
-  z-index:2;
+  background:rgba(0,0,0,.35);
+  z-index:-5;
 }
 
-/* HEADER */
+/* TOPO */
 
 .header{
   position:relative;
-  text-align:center;
-  padding-top:20px;
   z-index:5;
+  text-align:center;
   color:white;
+  padding:20px;
 }
 
 .header h1{
   font-size:3rem;
+}
+
+.header p{
+  opacity:.9;
 }
 
 /* BOTÃO SOM */
@@ -61,33 +64,50 @@ video{
   right:15px;
   z-index:9999;
   background:#ff2e63;
-  color:white;
   border:none;
   padding:10px 15px;
+  color:white;
   border-radius:999px;
-  cursor:pointer;
   font-weight:bold;
+  cursor:pointer;
 }
 
-/* ITENS FLUTUANTES */
+/* IMAGEM CENTRAL */
+
+.center{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  margin-top:10px;
+}
+
+.center img{
+  width:180px;
+  border-radius:20px;
+  border:3px solid white;
+  box-shadow:0 0 20px rgba(255,255,255,.3);
+}
+
+/* ITENS FIXOS */
 
 .item{
-  position:absolute;
-  padding:8px 12px;
-  background:rgba(255,255,255,.1);
+  position:fixed;
+  background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.2);
+  color:white;
+  padding:12px 16px;
   border-radius:999px;
   cursor:pointer;
-  color:white;
-  font-size:13px;
+  font-size:14px;
   backdrop-filter:blur(8px);
-  animation:float linear infinite;
-  user-select:none;
+  transition:.3s;
+  z-index:3;
 }
 
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-120vh);}
+.item:hover{
+  transform:scale(1.1);
+  background:white;
+  color:#ff2e63;
 }
 
 /* POPUP */
@@ -119,7 +139,6 @@ video{
 
 .box h2{
   color:#ff2e63;
-  margin-bottom:10px;
 }
 
 /* X */
@@ -143,14 +162,19 @@ video{
   <source src="https://raw.githubusercontent.com/Raineribim-rh/cabecuda-te-amo/02bc005806d2d8c935c9ab813bf112533b83408e/Nao_ficanos_parecidos_Nao_mud.mp4">
 </video>
 
+<div class="overlay"></div>
+
 <button class="sound" onclick="ativarSom()">🔊 Som</button>
 
 <div class="header">
   <h1>LARISSA ❤️</h1>
+  <p>cabeçuda • fuinha • minha delícia 😭❤️</p>
 </div>
 
-<!-- MUNDO -->
-<div id="world"></div>
+<div class="center">
+  <!-- coloque sua imagem aqui -->
+  <img src="https://i.imgur.com/8Km9tLL.png" alt="Larissa">
+</div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
@@ -163,74 +187,65 @@ video{
 
 <script>
 
-const world = document.getElementById("world");
-
 /* SOM */
-
 function ativarSom(){
-  const v = document.getElementById("video");
-  v.muted = false;
-  v.volume = 1;
+  const v=document.getElementById("video");
+  v.muted=false;
+  v.volume=1;
 }
 
-/* 40+ ITENS */
+/* ITENS FIXOS NA TELA */
 
 const itens = [
-["Cabeçona","Sua cabeça é gigantesca e perfeita 😭❤️"],
-["Testona","IMAX nível cinema 😩"],
-["Bundona","Gravidade própria 😭"],
-["Rabão","O mundo desacelera 😩"],
-["Xerecona","Perfeição proibida 😳❤️"],
-["Xulé","Arma biológica ☣️😭"],
-["Cheiro","Seu cheiro vicia 😩"],
+["Cabeçuda","Sua cabeça é enorme e perfeita 😭❤️"],
+["Fuinha","Sua cara de fuinha é única 😩❤️"],
+["Testa","Testa nível cinema IMAX 😭"],
+["Xerecona","Patrimônio mundial 😳❤️"],
+["Beiço","Beiço de periquito lindo 😩❤️"],
+["Cheiro","Seu cheiro vicia 😭"],
 ["Abraço","Seu abraço cura tudo ❤️"],
-["Sentada","Impacto global 😭"],
-["Gemido","Spotify deveria te contratar 😩"],
-["Beiço","Beiço de periquito lindo 😭❤️"],
-["Beijo","Apaga minha mente 😩"],
-["Boca","Injustamente perfeita 😭"],
+["Sentada","Impacto global 😩"],
+["Gemido","Isso é ilegal 😭"],
 ["Olhos","Me desmonta ❤️"],
 ["Sorriso","Meu ponto fraco 😩"],
-["Dormindo","Anjo bugado 😭"],
-["Brava","Mesmo assim linda 😩"],
-["Manhosa","Perfeição emocional ❤️"],
-["Dengosa","Vício total 😭"],
-["Cheiro cabelo","Insano 😩"],
-["Pescoço","Zona de perigo ❤️"],
-["Nariz","Fofo demais 😭"],
-["Orelha","Perfeita 😩"],
-["Coxas","Crime internacional 😭"],
-["Pés","Injusto 😩"],
-["Peito","Perfeição ❤️"],
-["Rabudinha","Absurdo 😭"],
+["Rabão","Gravidade própria 😭"],
 ["Gostosa","Inacreditável 😩"],
-["Delícia","Você é isso ❤️"],
-["Amor","Você é tudo 😭"],
-["Fuinha","Cara de fuinha perfeita 😩"],
-["Risada","Cura qualquer coisa ❤️"],
-["Gemidona","Proibido 😭"],
-["Abraçona","Segurança total 😩"],
-["Cheirosa","Vício absoluto ❤️"],
-["Tesão","Definição 😭"],
-["Perfeita","Zero defeitos 😩"],
-["Vida","Meu tudo ❤️"],
-["Minha","Só minha 😭"]
+["Amor","Você é tudo ❤️"],
+["Delícia","Definição perfeita 😭"],
+["Coxas","Crime internacional 😩"],
+["Boca","Perfeita demais 😭"],
+["Nariz","Fofo absurdo 😩"],
+["Cheirosa","Vício total ❤️"],
+["Vida","Meu tudo 😭"]
 ];
 
-/* SPAWN CORRETO */
+/* POSIÇÕES FIXAS */
 
-itens.forEach(i=>{
+const positions = [
+[10,20],[30,70],[70,30],[50,10],[80,80],
+[20,40],[60,60],[40,80],[15,60],[85,40],
+[25,25],[75,75],[55,20],[35,50],[65,10],
+[10,80],[90,20],[45,70],[60,35],[20,90]
+];
+
+const body=document.body;
+
+/* SPAWN */
+
+itens.forEach((i,idx)=>{
 
   const el=document.createElement("div");
   el.className="item";
   el.innerText=i[0];
 
-  el.style.left=Math.random()*90+"vw";
-  el.style.animationDuration=(Math.random()*18+10)+"s";
+  const pos=positions[idx];
+
+  el.style.left=pos[0]+"vw";
+  el.style.top=pos[1]+"vh";
 
   el.onclick=()=>open(i[0],i[1]);
 
-  world.appendChild(el);
+  body.appendChild(el);
 
 });
 
