@@ -3,78 +3,188 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Larissa ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
-html, body{
+*{
   margin:0;
   padding:0;
-  height:100%;
-  overflow:hidden;
-  background:black;
-  font-family:Arial;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
-/* VÍDEO (ESSENCIAL — NÃO MEXER) */
+body{
+  overflow-x:hidden;
+  background:black;
+  color:white;
+  min-height:100vh;
+}
 
-video{
+/* VIDEO */
+
+.bg-video{
   position:fixed;
-  top:0;
-  left:0;
+  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
+  z-index:-20;
+  filter:brightness(0.18) blur(1.5px);
+  transform:scale(1.03);
+}
+
+/* OVERLAY */
+
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.45));
   z-index:-10;
-  filter:brightness(.35);
 }
 
 /* BOTÃO SOM */
 
-.sound{
+.sound-btn{
   position:fixed;
-  top:15px;
-  right:15px;
-  z-index:9999;
+  top:20px;
+  right:20px;
+  padding:14px 20px;
+  border:none;
+  border-radius:999px;
   background:#ff2e63;
   color:white;
-  border:none;
-  padding:10px 15px;
-  border-radius:999px;
+  font-weight:800;
   cursor:pointer;
+  z-index:9999;
 }
 
-/* HEADER */
+/* CONTAINER */
 
-.header{
-  position:relative;
+.container{
+  width:100%;
+  max-width:1450px;
+  margin:auto;
+  padding:40px 20px 100px;
+}
+
+/* TITULO */
+
+.title{
   text-align:center;
+  margin-bottom:35px;
+}
+
+.title h1{
+  font-size:5rem;
+  font-weight:800;
+  background:linear-gradient(90deg,#fff,#ff9ab7);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* CABEÇUDA */
+
+.head-wrapper{
+  position:relative;
+  width:340px;
+  height:420px;
+  margin:0 auto 50px;
+}
+
+.head-shadow{
+  position:absolute;
+  width:260px;
+  height:70px;
+  background:rgba(0,0,0,.45);
+  border-radius:50%;
+  bottom:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  filter:blur(20px);
+}
+
+.face{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ffd4b8;
+  border:7px solid #111;
+  border-radius:55% 55% 52% 52%;
+}
+
+.hair{
+  position:absolute;
+  width:115%;
+  height:190px;
+  background:#111;
+  left:-7%;
+  top:-10px;
+  border-radius:60%;
+}
+
+.eye{
+  position:absolute;
+  width:45px;
+  height:45px;
+  background:#111;
+  border-radius:50%;
+  top:165px;
+}
+
+.left{left:80px;}
+.right{right:80px;}
+
+.mouth{
+  position:absolute;
+  width:110px;
+  height:50px;
+  border-bottom:8px solid #111;
+  border-radius:0 0 60px 60px;
+  bottom:95px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.fuinha{
+  position:absolute;
+  top:-30px;
+  right:-30px;
+  background:#ff2e63;
   color:white;
-  padding:20px;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:700;
 }
 
-.header h1{
-  font-size:3rem;
-}
-
-/* ITENS */
+/* GRID */
 
 .grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  padding:10px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
 }
 
-.item{
-  background:rgba(255,255,255,.12);
-  color:white;
-  padding:10px 14px;
-  border-radius:999px;
+/* CARD */
+
+.card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;
+  padding:22px;
   cursor:pointer;
-  font-size:13px;
-  border:1px solid rgba(255,255,255,.2);
+  transition:.3s;
+  text-align:center;
+}
+
+.card:hover{
+  transform:translateY(-7px) scale(1.05);
+  background:white;
+  color:#ff2e63;
 }
 
 /* POPUP */
@@ -82,33 +192,40 @@ video{
 .popup{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.8);
-  display:none;
+  background:rgba(0,0,0,.75);
+  display:flex;
   align-items:center;
   justify-content:center;
-  z-index:99999;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
 }
 
 .popup.active{
-  display:flex;
+  opacity:1;
+  pointer-events:all;
 }
 
-.box{
+.popup-box{
   width:90%;
-  max-width:500px;
+  max-width:700px;
   background:white;
-  color:black;
-  padding:25px;
-  border-radius:20px;
+  color:#111;
+  border-radius:35px;
+  padding:40px;
   text-align:center;
-  position:relative;
+}
+
+.popup-box h2{
+  color:#ff2e63;
+  font-size:2.5rem;
 }
 
 .close{
   position:absolute;
-  top:10px;
-  right:15px;
-  font-size:2rem;
+  top:15px;
+  right:22px;
+  font-size:2.2rem;
   cursor:pointer;
 }
 
@@ -117,79 +234,120 @@ video{
 
 <body>
 
-<!-- VÍDEO (RAW FUNCIONANDO) -->
-<video id="video" autoplay loop muted playsinline>
-  <source src="https://github.com/Raineribim-rh/cabecuda-te-amo/raw/refs/heads/main/Nao_ficanos_parecidos_Nao_mud.mp4">
+<!-- VIDEO -->
+<video id="video" autoplay loop playsinline class="bg-video" muted>
+  <source src="https://github.com/Raineribim-rh/cabecuda-te-amo/raw/refs/heads/main/Nao_ficanos_parecidos_Nao_mud.mp4" type="video/mp4">
 </video>
 
-<button class="sound" onclick="ativarSom()">🔊 Som</button>
+<!-- SOM -->
+<button class="sound-btn" onclick="ativarSom()">🔊 Ativar Som ❤️</button>
 
-<div class="header">
-  <h1>LARISSA ❤️</h1>
+<div class="container">
+
+  <div class="title">
+    <h1 id="titulo">LARISSA ❤️</h1>
+    <p>Minha cabeçuda • Minha fuinha • Minha delícia 😭❤️</p>
+  </div>
+
+  <!-- CABEÇUDA -->
+  <div class="head-wrapper">
+    <div class="fuinha">FUINHA 😭</div>
+    <div class="head-shadow"></div>
+
+    <div class="face">
+      <div class="hair"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="mouth"></div>
+    </div>
+  </div>
+
+  <!-- BOTÕES -->
+  <div class="grid" id="grid"></div>
+
 </div>
-
-<!-- ITENS -->
-<div class="grid" id="grid"></div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-  <div class="box">
+  <div class="popup-box">
     <div class="close" onclick="closePopup()">×</div>
-    <h2 id="t"></h2>
-    <p id="p"></p>
+    <h2 id="popupTitle"></h2>
+    <p id="popupText"></p>
   </div>
 </div>
 
 <script>
 
-/* SOM (OBRIGATÓRIO CLIQUE) */
+/* SOM */
 function ativarSom(){
-  const v=document.getElementById("video");
-  v.muted=false;
-  v.play();
+  const video = document.getElementById("video");
+  video.muted = false;
+  video.volume = 1;
+  video.play();
 }
 
-/* ITENS */
+/* 40 BOTÕES */
 
 const itens = [
-["Cabeçuda","Cabeça gigante e fofa 😭❤️"],
-["Fuinha","Cara de fuinha kkk 😩"],
-["Testa","IMAX total 😭"],
-["Olhos","Hipnose pura ❤️"],
-["Sorriso","Perdição 😩"],
-["Beiço","Perfeito demais 😭"],
-["Cheiro","Vício absurdo 😩"],
+
+["Cabeçona","Cabeça gigante nível satélite 😭❤️"],
+["Fuinha","Cara de fuinha lendária 😩"],
+["Testona","IMAX versão humana 😭"],
+["Olhar","Hipnose imediata 😩"],
+["Sorriso","Arma emocional ❤️"],
+["Beiço","Injustamente bonito 😭"],
+["Cheiro","Vício químico 😩"],
 ["Abraço","Segurança total ❤️"],
-["Brava","Mesmo assim linda 😭"],
-["Manhosa","Perfeição 😩"],
-["Coxas","Zoeira nível absurdo 😭"],
-["Boca","Perfeita ❤️"],
-["Nariz","Fofo demais 😩"],
-["Risada","Cura tudo 😭"],
-["Vida","Meu tudo ❤️"],
-["Amor","Você é isso 😩"],
-["Gostosa (zoeira)","Você é absurda 😭"],
-["Delícia","Definição ❤️"],
-["Cheirosa","Vício total 😩"],
-["Minha","Só minha 😭"]
+["Brava","Perfeita até irritada 😭"],
+["Manhosa","Golpe emocional 😩"],
+["Dengosa","Perigo máximo ❤️"],
+["Risada","Cura qualquer coisa 😭"],
+["Sentada","Evento global 😩"],
+["Gemido","Modo destruição ativado 😭"],
+["Coxas","Crime internacional 😩"],
+["Nariz","Fofo absurdo ❤️"],
+["Orelha","Até isso é lindo 😭"],
+["Pescoço","Zona de perigo 😩"],
+["Boca","Perfeição proibida ❤️"],
+["Cabelo","Patrimônio mundial 😭"],
+["Gostosa","Zueira nível máximo 😩"],
+["Delícia","Definição literal ❤️"],
+["Amor","Você é tudo 😭"],
+["Vida","Meu universo 😩"],
+["Minha","Só minha ❤️"],
+["Perfeita","Zero defeitos 😭"],
+["Fofa","Excesso detectado 😩"],
+["Linda","Sem explicação ❤️"],
+["Maravilhosa","Injusto com o mundo 😭"],
+["Vício","Dependência total 😩"],
+["Energia","Você muda tudo ❤️"],
+["Alegria","Minha paz 😭"],
+["Louca","Minha favorita 😩"],
+["Especial","Não existe outra ❤️"],
+["Única","Irrepetível 😭"],
+["Meu caos","Meu caos favorito 😩"],
+["Encanto","Você trava qualquer mente ❤️"],
+["Tesouro","Valiosa demais 😭"],
+["Minha vida","Tudo que importa 😩"]
+
 ];
 
-const grid=document.getElementById("grid");
+const grid = document.getElementById("grid");
 
 itens.forEach(i=>{
-  const el=document.createElement("div");
-  el.className="item";
-  el.innerText=i[0];
-  el.onclick=()=>open(i[0],i[1]);
-  grid.appendChild(el);
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerText = i[0];
+  div.onclick = ()=>openPopup(i[0],i[1]);
+  grid.appendChild(div);
 });
 
 /* POPUP */
 
-function open(t,p){
+function openPopup(titulo,texto){
   document.getElementById("popup").classList.add("active");
-  document.getElementById("t").innerText=t;
-  document.getElementById("p").innerText=p;
+  document.getElementById("popupTitle").innerText = titulo;
+  document.getElementById("popupText").innerText = texto;
 }
 
 function closePopup(){
