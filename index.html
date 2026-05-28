@@ -6,24 +6,19 @@
 
 <title>Larissa ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
 
-*{
+html, body{
   margin:0;
   padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-body{
-  overflow:hidden;
+  width:100%;
+  height:100%;
+  overflow:hidden; /* ISSO REMOVE A ÁREA BRANCA */
   background:black;
-  color:white;
+  font-family:Arial;
 }
 
-/* VIDEO */
+/* FUNDO VIDEO */
 
 video{
   position:fixed;
@@ -31,18 +26,31 @@ video{
   width:100%;
   height:100%;
   object-fit:cover;
-  z-index:-20;
-  filter:brightness(.18) blur(1.2px);
+  z-index:-10;
+  filter:brightness(.2);
 }
 
-/* OVERLAY */
+/* CAMADA PRINCIPAL */
 
-body::after{
-  content:'';
+#world{
   position:fixed;
   inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.35));
-  z-index:-10;
+  overflow:hidden;
+  z-index:2;
+}
+
+/* HEADER */
+
+.header{
+  position:relative;
+  text-align:center;
+  padding-top:20px;
+  z-index:5;
+  color:white;
+}
+
+.header h1{
+  font-size:3rem;
 }
 
 /* BOTÃO SOM */
@@ -51,57 +59,34 @@ body::after{
   position:fixed;
   top:15px;
   right:15px;
-  background:#ff2e63;
-  border:none;
-  padding:12px 18px;
-  border-radius:999px;
-  font-weight:800;
-  color:white;
   z-index:9999;
+  background:#ff2e63;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:999px;
   cursor:pointer;
-}
-
-/* TITULO */
-
-.header{
-  text-align:center;
-  padding:30px 10px;
-}
-
-.header h1{
-  font-size:4rem;
-  background:linear-gradient(90deg,#fff,#ff7aa2);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.header p{
-  opacity:.9;
+  font-weight:bold;
 }
 
 /* ITENS FLUTUANTES */
 
 .item{
   position:absolute;
-  padding:10px 14px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
+  padding:8px 12px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
   border-radius:999px;
   cursor:pointer;
-  font-size:.9rem;
-  backdrop-filter:blur(10px);
+  color:white;
+  font-size:13px;
+  backdrop-filter:blur(8px);
   animation:float linear infinite;
-  transition:.3s;
-}
-
-.item:hover{
-  transform:scale(1.15);
-  background:white;
-  color:#ff2e63;
+  user-select:none;
 }
 
 @keyframes float{
-  from{transform:translateY(120vh);}
+  from{transform:translateY(100vh);}
   to{transform:translateY(-120vh);}
 }
 
@@ -110,56 +95,42 @@ body::after{
 .popup{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
-  display:flex;
-  justify-content:center;
+  background:rgba(0,0,0,.8);
+  display:none;
   align-items:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:999;
+  justify-content:center;
+  z-index:99999;
 }
 
 .popup.active{
-  opacity:1;
-  pointer-events:all;
+  display:flex;
 }
 
 .box{
   width:90%;
-  max-width:650px;
+  max-width:500px;
   background:white;
-  color:#111;
-  padding:35px;
-  border-radius:25px;
+  color:black;
+  padding:25px;
+  border-radius:20px;
   text-align:center;
   position:relative;
 }
 
 .box h2{
   color:#ff2e63;
-  font-size:2rem;
   margin-bottom:10px;
 }
 
-/* X FECHAMENTO */
+/* X */
 
 .close{
   position:absolute;
   top:10px;
   right:15px;
-  font-size:2.2rem;
+  font-size:2rem;
   cursor:pointer;
-  font-weight:900;
-}
-
-/* BOTÃO SOM */
-
-.sound{
-  position:fixed;
-  top:15px;
-  right:15px;
-  z-index:9999;
+  font-weight:bold;
 }
 
 </style>
@@ -176,24 +147,23 @@ body::after{
 
 <div class="header">
   <h1>LARISSA ❤️</h1>
-  <p>Clica nos elogios flutuantes 😭❤️</p>
 </div>
+
+<!-- MUNDO -->
+<div id="world"></div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-
   <div class="box">
-
     <div class="close" onclick="closePopup()">×</div>
-
-    <h2 id="title"></h2>
-    <p id="text"></p>
-
+    <h2 id="t"></h2>
+    <p id="p"></p>
   </div>
-
 </div>
 
 <script>
+
+const world = document.getElementById("world");
 
 /* SOM */
 
@@ -203,78 +173,73 @@ function ativarSom(){
   v.volume = 1;
 }
 
-/* +40 ITENS FLUTUANTES */
+/* 40+ ITENS */
 
-const dados = [
-["Cabeçona","Sua cabeça é tão grande que pega Wi-Fi no planeta inteiro 😭❤️"],
-["Testona","Essa testona é IMAX nível cinema 😩"],
-["Bundona","Esse bundão cria gravidade própria 😭"],
-["Rabão","Planeta desacelera quando você passa 😩"],
-["Xerecona","Patrimônio mundial da beleza 😳❤️"],
-["Xulé","Arma biológica nível ONU ☣️😭"],
-["Cheiro","Seu cheiro vicia mais que droga 😩"],
-["Abraço","Seu abraço prende minha alma ❤️"],
-["Sentada","Sua sentada derruba servidor 😭"],
-["Gemido","Seu gemido deveria estar no Spotify 😩"],
-["Beiço","Seu beiço de periquito é absurdo 😭❤️"],
-["Beijo","Te beijar apaga minha mente 😩"],
-["Bocona","Sua boca é ilegal de tão linda 😭"],
-["Olhos","Seus olhos me desmontam ❤️"],
-["Sorriso","Seu sorriso destrói minha sanidade 😩"],
-["Dormindo","Você dormindo parece anjo bugado 😭"],
-["Brava","Até brava você é gostosa 😩"],
-["Manhosa","Seu drama é perfeito ❤️"],
-["Dengosa","Você é puro dengo 😭"],
-["Cheiro cabelo","Seu cabelo vicia 😩"],
-["Pescoço","Seu pescoço é área de perigo ❤️"],
-["Nariz","Narizinho fofo absurdo 😭"],
-["Orelha","Até sua orelha é linda 😩"],
-["Coxas","Essas coxas são ameaça global 😭"],
-["Pés","Até seu pé é injusto 😩"],
-["Peitinho","Perfeição em forma humana ❤️"],
-["Rabudinha","Crime de tão perfeito 😭"],
-["Gostosa","Você é absurda 😩"],
-["Delícia","Definição de perfeição ❤️"],
-["Amor","Você é minha vida 😭"],
-["Fuinha","Cara de fuinha mais linda do mundo 😩"],
-["Risada","Sua risada cura tudo ❤️"],
-["Gemidona","Isso não deveria existir 😭"],
-["Abraçona","Abraço nível cura mundial 😩"],
-["Cheirosa","Perfume natural perfeito ❤️"],
-["Tesão","Você é o conceito 😭"],
-["Perfeita","Erro zero na criação 😩"],
-["Vida","Você é tudo ❤️"],
-["Minha","Minha pessoa favorita 😭"]
+const itens = [
+["Cabeçona","Sua cabeça é gigantesca e perfeita 😭❤️"],
+["Testona","IMAX nível cinema 😩"],
+["Bundona","Gravidade própria 😭"],
+["Rabão","O mundo desacelera 😩"],
+["Xerecona","Perfeição proibida 😳❤️"],
+["Xulé","Arma biológica ☣️😭"],
+["Cheiro","Seu cheiro vicia 😩"],
+["Abraço","Seu abraço cura tudo ❤️"],
+["Sentada","Impacto global 😭"],
+["Gemido","Spotify deveria te contratar 😩"],
+["Beiço","Beiço de periquito lindo 😭❤️"],
+["Beijo","Apaga minha mente 😩"],
+["Boca","Injustamente perfeita 😭"],
+["Olhos","Me desmonta ❤️"],
+["Sorriso","Meu ponto fraco 😩"],
+["Dormindo","Anjo bugado 😭"],
+["Brava","Mesmo assim linda 😩"],
+["Manhosa","Perfeição emocional ❤️"],
+["Dengosa","Vício total 😭"],
+["Cheiro cabelo","Insano 😩"],
+["Pescoço","Zona de perigo ❤️"],
+["Nariz","Fofo demais 😭"],
+["Orelha","Perfeita 😩"],
+["Coxas","Crime internacional 😭"],
+["Pés","Injusto 😩"],
+["Peito","Perfeição ❤️"],
+["Rabudinha","Absurdo 😭"],
+["Gostosa","Inacreditável 😩"],
+["Delícia","Você é isso ❤️"],
+["Amor","Você é tudo 😭"],
+["Fuinha","Cara de fuinha perfeita 😩"],
+["Risada","Cura qualquer coisa ❤️"],
+["Gemidona","Proibido 😭"],
+["Abraçona","Segurança total 😩"],
+["Cheirosa","Vício absoluto ❤️"],
+["Tesão","Definição 😭"],
+["Perfeita","Zero defeitos 😩"],
+["Vida","Meu tudo ❤️"],
+["Minha","Só minha 😭"]
 ];
 
-function spawn(){
+/* SPAWN CORRETO */
 
-  dados.forEach((d,i)=>{
+itens.forEach(i=>{
 
-    const el = document.createElement("div");
-    el.className="item";
-    el.innerText=d[0];
+  const el=document.createElement("div");
+  el.className="item";
+  el.innerText=i[0];
 
-    el.style.left=Math.random()*100+"vw";
-    el.style.animationDuration=(Math.random()*20+15)+"s";
-    el.style.top="100vh";
+  el.style.left=Math.random()*90+"vw";
+  el.style.animationDuration=(Math.random()*18+10)+"s";
 
-    el.onclick=()=>open(d[0],d[1]);
+  el.onclick=()=>open(i[0],i[1]);
 
-    document.body.appendChild(el);
+  world.appendChild(el);
 
-  });
-
-}
-
-spawn();
+});
 
 /* POPUP */
 
 function open(t,p){
   document.getElementById("popup").classList.add("active");
-  document.getElementById("title").innerText=t;
-  document.getElementById("text").innerText=p;
+  document.getElementById("t").innerText=t;
+  document.getElementById("p").innerText=p;
 }
 
 function closePopup(){
