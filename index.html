@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Larissa ❤️</title>
@@ -27,266 +30,674 @@ body{
 /* VIDEO */
 
 .bg-video{
+
   position:fixed;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
   z-index:-20;
-  filter:brightness(0.18) blur(1.5px);
+
+  filter:
+    brightness(.20)
+    blur(1.5px);
+
   transform:scale(1.03);
+
 }
 
 /* OVERLAY */
 
 body::after{
+
   content:'';
+
   position:fixed;
+
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.45));
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.93),
+      rgba(0,0,0,.40)
+    );
+
   z-index:-10;
+
 }
 
 /* BOTÃO SOM */
 
 .sound-btn{
+
   position:fixed;
+
   top:20px;
   right:20px;
-  padding:14px 20px;
+
+  padding:14px 22px;
+
   border:none;
+
   border-radius:999px;
-  background:#ff2e63;
+
+  background:rgba(255,46,99,.88);
+
+  backdrop-filter:blur(12px);
+
   color:white;
+
   font-weight:800;
+
   cursor:pointer;
-  z-index:9999;
+
+  z-index:99999;
+
+  transition:.3s;
+
+  box-shadow:
+    0 6px 25px rgba(255,46,99,.35);
+
+}
+
+.sound-btn:hover{
+
+  transform:scale(1.08);
+
 }
 
 /* CONTAINER */
 
 .container{
+
   width:100%;
   max-width:1450px;
+
   margin:auto;
+
   padding:40px 20px 100px;
+
 }
 
 /* TITULO */
 
 .title{
+
   text-align:center;
+
   margin-bottom:35px;
+
 }
 
 .title h1{
+
   font-size:5rem;
+
   font-weight:800;
-  background:linear-gradient(90deg,#fff,#ff9ab7);
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #ff9ab7
+    );
+
   -webkit-background-clip:text;
+
   -webkit-text-fill-color:transparent;
+
+  transition:.4s;
+
+}
+
+.title p{
+
+  margin-top:10px;
+
+  color:#eee;
+
+  font-size:1.05rem;
+
 }
 
 /* CABEÇUDA */
 
 .head-wrapper{
+
   position:relative;
+
   width:340px;
   height:420px;
+
   margin:0 auto 50px;
+
 }
 
 .head-shadow{
+
   position:absolute;
+
   width:260px;
   height:70px;
+
   background:rgba(0,0,0,.45);
+
   border-radius:50%;
+
   bottom:-20px;
+
   left:50%;
+
   transform:translateX(-50%);
+
   filter:blur(20px);
+
 }
 
 .face{
+
   position:absolute;
+
   width:100%;
   height:100%;
+
   background:#ffd4b8;
+
   border:7px solid #111;
+
   border-radius:55% 55% 52% 52%;
+
 }
 
 .hair{
+
   position:absolute;
+
   width:115%;
   height:190px;
+
   background:#111;
+
   left:-7%;
+
   top:-10px;
+
   border-radius:60%;
+
 }
 
 .eye{
+
   position:absolute;
+
   width:45px;
   height:45px;
+
   background:#111;
+
   border-radius:50%;
+
   top:165px;
+
 }
 
-.left{left:80px;}
-.right{right:80px;}
+.left{
+  left:80px;
+}
+
+.right{
+  right:80px;
+}
 
 .mouth{
+
   position:absolute;
+
   width:110px;
   height:50px;
+
   border-bottom:8px solid #111;
+
   border-radius:0 0 60px 60px;
+
   bottom:95px;
+
   left:50%;
+
   transform:translateX(-50%);
+
 }
 
 .fuinha{
+
   position:absolute;
+
   top:-30px;
   right:-30px;
+
   background:#ff2e63;
+
   color:white;
+
   padding:12px 18px;
+
   border-radius:999px;
+
   font-weight:700;
+
+  box-shadow:
+    0 0 25px rgba(255,46,99,.5);
+
 }
 
 /* GRID */
 
 .grid{
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(190px,1fr)
+    );
+
   gap:18px;
+
 }
 
 /* CARD */
 
 .card{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:24px;
-  padding:22px;
+
+  background:rgba(255,255,255,.07);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  backdrop-filter:blur(10px);
+
+  border-radius:26px;
+
+  padding:24px 18px;
+
   cursor:pointer;
+
   transition:.3s;
+
   text-align:center;
+
+  color:white;
+
+  min-height:95px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  box-shadow:
+    0 4px 25px rgba(0,0,0,.22);
+
+}
+
+.card span{
+
+  font-size:1.05rem;
+
+  font-weight:700;
+
 }
 
 .card:hover{
-  transform:translateY(-7px) scale(1.05);
-  background:white;
+
+  transform:
+    translateY(-8px)
+    scale(1.05);
+
+  background:rgba(255,255,255,.92);
+
   color:#ff2e63;
+
+  box-shadow:
+    0 10px 35px rgba(255,46,99,.35);
+
 }
 
 /* POPUP */
 
 .popup{
+
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.75);
+
+  background:rgba(0,0,0,.45);
+
+  backdrop-filter:blur(8px);
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   opacity:0;
+
   pointer-events:none;
-  transition:.3s;
+
+  transition:.35s;
+
+  z-index:999999;
+
+  padding:20px;
+
 }
 
 .popup.active{
+
   opacity:1;
+
   pointer-events:all;
+
 }
 
 .popup-box{
-  width:90%;
-  max-width:700px;
-  background:white;
-  color:#111;
+
+  position:relative;
+
+  width:100%;
+
+  max-width:680px;
+
+  background:rgba(255,255,255,.12);
+
+  border:1px solid rgba(255,255,255,.18);
+
+  backdrop-filter:blur(18px);
+
+  color:white;
+
   border-radius:35px;
-  padding:40px;
+
+  padding:45px 30px;
+
   text-align:center;
+
+  box-shadow:
+    0 10px 50px rgba(0,0,0,.45),
+    0 0 40px rgba(255,46,99,.18);
+
+  animation:popupAnim .25s ease;
+
 }
 
 .popup-box h2{
-  color:#ff2e63;
-  font-size:2.5rem;
+
+  color:#ff8fb0;
+
+  font-size:2.4rem;
+
+  margin-bottom:18px;
+
+  font-weight:800;
+
+}
+
+.popup-box p{
+
+  font-size:1.15rem;
+
+  line-height:1.7;
+
+  color:#fff;
+
 }
 
 .close{
+
   position:absolute;
-  top:15px;
-  right:22px;
-  font-size:2.2rem;
+
+  top:14px;
+
+  right:18px;
+
+  width:44px;
+
+  height:44px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.12);
+
+  border:1px solid rgba(255,255,255,.2);
+
+  font-size:1.8rem;
+
   cursor:pointer;
+
+  transition:.25s;
+
+}
+
+.close:hover{
+
+  transform:
+    scale(1.12)
+    rotate(90deg);
+
+  background:#ff2e63;
+
+}
+
+/* ANIMAÇÃO */
+
+@keyframes popupAnim{
+
+  from{
+
+    transform:
+      scale(.82)
+      translateY(20px);
+
+    opacity:0;
+
+  }
+
+  to{
+
+    transform:
+      scale(1)
+      translateY(0);
+
+    opacity:1;
+
+  }
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  .title h1{
+    font-size:3rem;
+  }
+
+  .popup-box h2{
+    font-size:2rem;
+  }
+
+  .popup-box p{
+    font-size:1rem;
+  }
+
+  .card{
+    min-height:80px;
+  }
+
+  .head-wrapper{
+    width:280px;
+    height:350px;
+  }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- VIDEO -->
-<video id="video" autoplay loop playsinline class="bg-video" muted>
-  <source src="https://github.com/Raineribim-rh/cabecuda-te-amo/raw/refs/heads/main/Nao_ficanos_parecidos_Nao_mud.mp4" type="video/mp4">
+
+<video
+id="video"
+autoplay
+loop
+playsinline
+webkit-playsinline
+class="bg-video"
+muted>
+
+<source
+src="https://github.com/Raineribim-rh/cabecuda-te-amo/raw/refs/heads/main/Nao_ficanos_parecidos_Nao_mud.mp4"
+type="video/mp4">
+
 </video>
 
-<!-- SOM -->
-<button class="sound-btn" onclick="ativarSom()">🔊 Ativar Som ❤️</button>
+<!-- BOTAO SOM -->
+
+<button
+class="sound-btn"
+onclick="ativarSom()">
+
+🔊 Ativar Som ❤️
+
+</button>
 
 <div class="container">
 
+  <!-- TITULO -->
+
   <div class="title">
-    <h1 id="titulo">LARISSA ❤️</h1>
-    <p>Minha cabeçuda • Minha fuinha • Minha delícia 😭❤️</p>
+
+    <h1 id="titulo">
+      LARISSA ❤️
+    </h1>
+
+    <p>
+      Minha cabeçuda • Minha fuinha • Meu caos favorito 😭❤️
+    </p>
+
   </div>
 
   <!-- CABEÇUDA -->
+
   <div class="head-wrapper">
-    <div class="fuinha">FUINHA 😭</div>
+
+    <div class="fuinha">
+      FUINHA 😭
+    </div>
+
     <div class="head-shadow"></div>
 
     <div class="face">
+
       <div class="hair"></div>
+
       <div class="eye left"></div>
+
       <div class="eye right"></div>
+
       <div class="mouth"></div>
+
     </div>
+
   </div>
 
-  <!-- BOTÕES -->
-  <div class="grid" id="grid"></div>
+  <!-- GRID -->
+
+  <div
+  class="grid"
+  id="grid">
+  </div>
 
 </div>
 
 <!-- POPUP -->
-<div class="popup" id="popup">
+
+<div
+class="popup"
+id="popup">
+
   <div class="popup-box">
-    <div class="close" onclick="closePopup()">×</div>
+
+    <div
+    class="close"
+    onclick="closePopup()">
+      ×
+    </div>
+
     <h2 id="popupTitle"></h2>
+
     <p id="popupText"></p>
+
   </div>
+
 </div>
 
 <script>
 
 /* SOM */
+
 function ativarSom(){
-  const video = document.getElementById("video");
+
+  const video =
+  document.getElementById("video");
+
   video.muted = false;
+
   video.volume = 1;
+
   video.play();
+
+  document.querySelector(".sound-btn")
+  .innerHTML = "❤️ SOM ATIVADO ❤️";
+
 }
 
-/* 40 BOTÕES */
+/* TITULO ANIMADO */
+
+const titulo =
+document.getElementById("titulo");
+
+setInterval(()=>{
+
+  titulo.style.transform =
+  "scale(1.04)";
+
+  setTimeout(()=>{
+
+    titulo.style.transform =
+    "scale(1)";
+
+  },300);
+
+},2000);
+
+/* ITENS */
 
 const itens = [
 
@@ -328,31 +739,90 @@ const itens = [
 ["Minha Larissa","Só você existe nisso 😩"],
 ["Meu problema","Problema favorito 😭"],
 ["Minha louca","Caos que eu amo 😩"],
-["Meu amorzão","Exagero de sentimento 😭❤️"]
+["Meu amorzão","Exagero de sentimento 😭❤️"],
+["Xerecuda","Patrimônio nacional 😩❤️"],
+["Piriquituda","Perigosa de linda 😭"],
+["Tabacuda","Evento histórico 😩"],
+["Rabão","Desbalanceamento gravitacional 😭"],
+["Xulezenta","Mesmo assim perfeita 😩❤️"],
+["Bochechuda","Dá vontade de apertar 😭"],
+["Marrenta","Marra injustificada 😩"],
+["Mordedora","Ataques inesperados 😭❤️"],
+["Ciumenta","Mini demônio favorita 😩"],
+["Mimosa","Fofo nível extremo 😭"],
+["Safadinha","Modo caos ativado 😩❤️"]
 
 ];
 
-const grid = document.getElementById("grid");
+/* GRID */
+
+const grid =
+document.getElementById("grid");
 
 itens.forEach(i=>{
-  const div = document.createElement("div");
+
+  const div =
+  document.createElement("div");
+
   div.className = "card";
-  div.innerText = i[0];
-  div.onclick = ()=>openPopup(i[0],i[1]);
+
+  div.innerHTML =
+  `<span>${i[0]}</span>`;
+
+  div.onclick = ()=>
+  openPopup(i[0],i[1]);
+
   grid.appendChild(div);
+
 });
 
 /* POPUP */
 
 function openPopup(titulo,texto){
-  document.getElementById("popup").classList.add("active");
-  document.getElementById("popupTitle").innerText = titulo;
-  document.getElementById("popupText").innerText = texto;
+
+  const popup =
+  document.getElementById("popup");
+
+  document.getElementById("popupTitle")
+  .innerText = titulo;
+
+  document.getElementById("popupText")
+  .innerText = texto;
+
+  popup.classList.add("active");
+
 }
 
 function closePopup(){
-  document.getElementById("popup").classList.remove("active");
+
+  document.getElementById("popup")
+  .classList.remove("active");
+
 }
+
+/* FECHAR FORA */
+
+document.getElementById("popup")
+.addEventListener("click",(e)=>{
+
+  if(e.target.id === "popup"){
+
+    closePopup();
+
+  }
+
+});
+
+/* AUTOPLAY MOBILE */
+
+document.addEventListener("click",()=>{
+
+  const video =
+  document.getElementById("video");
+
+  video.play();
+
+},{ once:true });
 
 </script>
 
